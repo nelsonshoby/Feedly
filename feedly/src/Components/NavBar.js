@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Search,Notification,Filter } from "@bigbinary/neeto-icons";
 import { Button } from "@bigbinary/neetoui/v2";
 import { Tooltip } from "@bigbinary/neetoui/v2";
+import Subscribes from './Subscribes';
+import ShowFilter from './ShowFilter';
 
 function NavBar() {
+    const[showSub,setSub] = useState(false)
+    const [showPane, setShowPane] = useState(false);
     return (
-    
             <nav className="border-b-2 ">
                 <div className=" mx-8 ">
                     <div className="flex justify-between">
@@ -17,14 +20,16 @@ function NavBar() {
                         <div className="ml-5"><Search/></div>
                     </Tooltip>
                     <Tooltip placement = {"bottom"} content = {"Notification"}>
-                        <div className="ml-5"><Notification/></div>
+                        <div onClick = {()=>setSub(!showSub)} className="ml-5"><Notification/></div>
                     </Tooltip>
                     <Tooltip placement = {"bottom"} content = {"Filter"}>
-                    <div className = "ml-5 mb-2 bg-gray-300 rounded"><Button label ="Filter" style = "Secondary" icon={Filter} /></div>
+                    <div onClick = {()=>setShowPane(!showPane)} className = "ml-5 mb-2 bg-gray-300 rounded"><Button label ="Filter" style = "Secondary" icon={Filter} /></div>
                     </Tooltip>
                     </div>
                     </div>
                 </div>
+                <Subscribes showSub = {showSub} setSub = {setSub}/>
+                <ShowFilter showPane = {showPane} setShowPane = {setShowPane}/>
             </nav>
           
     )

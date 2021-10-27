@@ -41,7 +41,7 @@ function NewsComponent({category}) {
                 </div>
             </div>
         ))
-}
+        }
     </div>
     </div>
   );
