@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import useFetch from "./useFetch";
+import React from 'react'
+import NewsComponent from './NewsComponent'
 
-
-const Home = () => {
-  const { data,isPending } = useFetch(' https://inshortsapi.vercel.app/news?category=science')
- 
-  return (
-    <div className="home">
-      {console.log(data)}
-    </div>
-  );
+function Home() {
+    return (
+        <div>
+            <NewsComponent category= "national"/>
+            <NewsComponent category= "world"/>
+            <NewsComponent category= "sports"/>
+            <NewsComponent category= "business"/>
+        </div>
+    )
 }
- 
-export default Home;
+
+export default Home
