@@ -23,7 +23,7 @@ function NavBar() {
                         <div onClick = {()=>setSub(!showSub)} className="ml-5"><Notification/></div>
                     </Tooltip>
                     <Tooltip placement = {"bottom"} content = {"Filter"}>
-                    <div onClick = {()=>setShowPane(!showPane)} className = "ml-5 mb-2 bg-gray-300 rounded"><Button label ="Filter" style = "Secondary" icon={Filter} /></div>
+                    <div onClick = {()=>setShowPane(!showPane)} className = "ml-5 mb-2 rounded"><Button label ="Filter" style = "secondary" icon={Filter} /></div>
                     </Tooltip>
                     </div>
                     </div>
