@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import { BlogContext } from '../App';
 import SubNews from './SubNews';
 import useFetch from './useFetch';
 
+// export const DataContext = createContext()
 
 function NewsComponent({category}) {
     const { data:blog,isPending } = useFetch(`https://inshortsapi.vercel.app/news?category=${category}`)
+    const {blogg , setBlogg } = useContext(BlogContext)
+
+
+    useEffect(() => {
+        console.log("data : ",blog)
+        setBlogg(blog)
+    },[blog])
+
+
   return (
     <div className = "m-20">
-    <div> 
+   
+    {/* <DataContext.Provider value={{blog}}>
+        <EmptyCategotyList/>
+    <DataContext.Provider/>   */}
+
+    <div>  
     <h2 className = "flex justify-self-start ">{blog &&  blog.category.charAt(0).toUpperCase() + blog.category.slice(1)}  News</h2>
     </div>
     <div className = "flex mt-3 border-b-2 pb-6 ">
@@ -18,7 +34,7 @@ function NewsComponent({category}) {
         <div className = "ml-5 flex-col ">
             <h3 className = "text-left">{blog && blog.data[0].title}</h3>  
             <div className = "text-right mt-10">
-            <h5 className = "text-gray-400">{blog && blog.data[0].author+"at"+blog.data[0].time+"on"+blog.data[0].date}</h5>  
+            <h5 className = "text-gray-400">{blog && blog.data[0].author+"at"+blog.data[0].time+" "+ "on" +blog.data[0].date}</h5>  
             </div>
             <div className = " mt-10 text-left">
                 <h6>{blog && blog.data[0].content}</h6>

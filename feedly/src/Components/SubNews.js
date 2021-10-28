@@ -12,7 +12,7 @@ function SubNews({blog,ele}) {
                    <br/>
                    <div className = "text-gray-400">{blog && blog.data[ele].author+"at"+blog.data[ele].time+"on"+blog.data[ele].date}</div>
                    <div>
-                    <Link to={{pathname: "./article", state: {...blog?.data[ele],blog}}} className="flex justify-self-start no-underline mt-3 text-purple-700 ">Read More</Link>
+                    <Link to={{pathname: "./article", state: {...blog?.data[ele],blog,ele}}} className="flex justify-self-start no-underline mt-3 text-purple-700 ">Read More</Link>
                     </div>
                 </div>
             </div> 
