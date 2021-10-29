@@ -4,7 +4,7 @@ import { BlogContext } from '../App';
 import SubNews from './SubNews';
 import useFetch from './useFetch';
 
-// export const DataContext = createContext()
+
 
 function NewsComponent({category}) {
     const { data:blog,isPending } = useFetch(`https://inshortsapi.vercel.app/news?category=${category}`)
@@ -20,9 +20,7 @@ function NewsComponent({category}) {
   return (
     <div className = "m-20">
    
-    {/* <DataContext.Provider value={{blog}}>
-        <EmptyCategotyList/>
-    <DataContext.Provider/>   */}
+    
 
     <div>  
     <h2 className = "flex justify-self-start ">{blog &&  blog.category.charAt(0).toUpperCase() + blog.category.slice(1)}  News</h2>
