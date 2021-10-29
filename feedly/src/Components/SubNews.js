@@ -8,11 +8,11 @@ function SubNews({blog,ele}) {
             <img src = "https://picsum.photos/84/84" alt = "pic"/>
                 
                 <div className = "flex-col text-left pl-2">
-                   <strong >{blog && blog.data[ele].title}</strong>
+                   <strong >{(blog?.data?.[ele])?.title}</strong>
                    <br/>
-                   <div className = "text-gray-400">{blog && blog.data[ele].author+"at"+blog.data[ele].time+"on"+blog.data[ele].date}</div>
+                   <div className = "text-gray-400">{(blog?.data?.[ele])?.author+"at"+(blog?.data?.[ele])?.time+"on"+(blog?.data?.[ele])?.date}</div>
                    <div>
-                    <Link to={{pathname: "./article", state: {...blog?.data[ele],blog,ele}}} className="flex justify-self-start no-underline mt-3 text-purple-700 ">Read More</Link>
+                    <Link to={{pathname: "./article", state: {...blog?.data?.[ele],blog,ele}}} className="flex justify-self-start no-underline mt-3 text-purple-700 ">Read More</Link>
                     </div>
                 </div>
             </div> 
