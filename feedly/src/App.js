@@ -9,15 +9,18 @@ import ErrorPage from './Components/ErrorPage';
 
 export const ListContext = createContext()
 export const BlogContext = createContext()
+export const FullDataContext = createContext()
 
 function App() {
   const [blogg , setBlogg ] = useState([])
+  const [fullData,setFullData] = useState([])
   const [category_check_list, setCategoryCheckList] = useState(["national","all", "sports", "business"]);
   return (
     <Router>
     <div className="App">
       <ListContext.Provider value={{category_check_list, setCategoryCheckList}}>
         <BlogContext.Provider value={{blogg , setBlogg}} >
+          <FullDataContext.Provider value = {{fullData,setFullData}} >
           <NavBar/>
           <div>
           <Switch>
@@ -31,6 +34,7 @@ function App() {
             <Route exact path = "*"> <ErrorPage/></Route>
           </Switch>
           </div>
+          </FullDataContext.Provider>
         </BlogContext.Provider>   
       </ListContext.Provider>
     </div>

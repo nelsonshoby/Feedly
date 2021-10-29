@@ -1,0 +1,1 @@
+export const ALL_CATEGORY = ["all","national", "business","sports","world","politics","technology","startup","entertainment","miscellaneous","science","automobile"]
