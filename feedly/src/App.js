@@ -5,6 +5,7 @@ import Article from './Components/Article';
 import {BrowserRouter as Router,Route,Switch,useLocation} from 'react-router-dom';
 import { createContext, useState } from 'react';
 import EmptyCategotyList from './Components/EmptyCategotyList';
+import ErrorPage from './Components/ErrorPage';
 
 export const ListContext = createContext()
 export const BlogContext = createContext()
@@ -27,6 +28,7 @@ function App() {
             <Route exact path ="/article">
                 <Article/>
             </Route>
+            <Route exact path = "*"> <ErrorPage/></Route>
           </Switch>
           </div>
         </BlogContext.Provider>   

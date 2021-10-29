@@ -1,15 +1,16 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Group from "../Pictures/Group.png"
 import { Button } from "@bigbinary/neetoui/v2";
 import { Edit } from "@bigbinary/neeto-icons";
 import SubNews from './SubNews';
 import { BlogContext } from '../App';
+import ConnectForm from './ConnectForm';
 
 
 function EmptyCategotyList() {
 
     const {blogg , setBlogg} = useContext(BlogContext)
-
+    const [connect,setConnect] = useState(false)
    
     return (
         <div className = "m-20">
@@ -18,7 +19,7 @@ function EmptyCategotyList() {
                 <h4 className = "mt-4">No News Article Found</h4>
                 <Button
                     label="Write To Us"
-                    onClick={function noRefCheck(){}}
+                    onClick={()=>setConnect(!connect)}
                     style="secondary"
                     icon={Edit}
                     iconPosition = "left"
@@ -33,6 +34,7 @@ function EmptyCategotyList() {
             ))
             }   
             </div>
+            <ConnectForm connect ={connect} setConnect = {setConnect}/>
         </div>
     )
 }
