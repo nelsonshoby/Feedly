@@ -1,15 +1,14 @@
 import React, {useContext, useEffect ,useState} from 'react'
 import { FullDataContext, ListContext, TodaysNewsContext } from '../App'
 import NewsComponent from './NewsComponent'
-import { Tag } from "@bigbinary/neetoui/v2";
-import { PageLoader } from "@bigbinary/neetoui/v2";
+import { Tag,PageLoader } from "@bigbinary/neetoui/v2";
 import { useHistory } from "react-router";
 import axios from 'axios'
 import { ALL_CATEGORY } from '../Constants/Constants';
 
 
 
-function Home({}) {
+const Home= ({}) => {
     const allData = ALL_CATEGORY
     const history = useHistory();
     const rem = (ele) => {

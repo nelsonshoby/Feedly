@@ -5,7 +5,7 @@ import SubNews from './SubNews';
 import { Typography } from "@bigbinary/neetoui/v2";
 
 
-function NewsComponent({news}) {
+const NewsComponent = ({news}) => {
     
     const {blogg , setBlogg } = useContext(BloggContext)
     const {fullData,setFullData} = useContext(FullDataContext)

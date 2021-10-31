@@ -1,15 +1,12 @@
-import { Pane } from "@bigbinary/neetoui/v2";
-import { Button } from "@bigbinary/neetoui/v2";
-import { Typography } from "@bigbinary/neetoui/v2";
+import { Pane,Button,Typography,Checkbox } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
-import { Checkbox } from "@bigbinary/neetoui/v2";
 import { useContext, useEffect, useState } from 'react'
 import { ListContext, TodaysNewsContext } from "../App";
 import { Link } from "react-router-dom";
 import { ALL_CATEGORY } from "../Constants/Constants";
 
 
-function ShowFilter({showPane,setShowPane}) {
+const ShowFilter = ({showPane,setShowPane}) => {
   
     const {category_check_list, setCategoryCheckList} = useContext(ListContext)
     const [filterState, setFilterState] = useState(category_check_list)

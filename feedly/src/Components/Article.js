@@ -5,12 +5,10 @@ import { Copy } from "@bigbinary/neeto-icons";
 import { LoremIpsum } from 'react-lorem-ipsum';
 import SubNews from './SubNews';
 import { FullDataContext} from '../App'
-import { Tooltip } from "@bigbinary/neetoui/v2";
-import { Typography } from "@bigbinary/neetoui/v2";
+import { Tooltip ,Typography} from "@bigbinary/neetoui/v2";
 
 
-
-function Article() {
+const Article= () => {
     
     const {fullData,setFullData} = useContext(FullDataContext)
     const {category,slug} = useParams()

@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { Search,Notification,Filter } from "@bigbinary/neeto-icons";
-import { Button } from "@bigbinary/neetoui/v2";
-import { Tooltip } from "@bigbinary/neetoui/v2";
+import { Button,Tooltip,Typography } from "@bigbinary/neetoui/v2";
 import Subscribes from './Subscribes';
 import ShowFilter from './ShowFilter';
 import SearchNews from './SearchNews';
-import { Typography } from "@bigbinary/neetoui/v2";
 
-function NavBar() {
+
+const NavBar=()=> {
     const[showSub,setSub] = useState(false)
     const [showPane, setShowPane] = useState(false);
     const[showSearch,setShowSearch] = useState(false)

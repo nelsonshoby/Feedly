@@ -1,10 +1,9 @@
 import React from 'react'
 import errorPic from "../Pictures/Error.png"
-import { Button } from "@bigbinary/neetoui/v2";
+import { Button,Typography } from "@bigbinary/neetoui/v2";
 import { Link } from 'react-router-dom'
-import { Typography } from "@bigbinary/neetoui/v2";
 
-function ErrorPage() {
+const  ErrorPage= () => {
     return (
         <div>
             <div className = "absolute top-0 left-0 flex flex-col justify-center items-center w-full h-full">
@@ -17,7 +16,7 @@ function ErrorPage() {
                     label="Take me home"
                     
                     style="secondary"
-                    // icon={Edit}
+                    
                     iconPosition = "left"/></Link>
             </div>
         </div>

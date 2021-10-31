@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Typography } from "@bigbinary/neetoui/v2";
 
 
-function SubNews({blog,ele}) {
+const SubNews = ({blog,ele})  =>{
     const  [slug,setSlug] = useState('')
     const  [category,setCategory] = useState('')
 
