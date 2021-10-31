@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import { Modal } from "@bigbinary/neetoui/v2";
-import { Button } from "@bigbinary/neetoui/v2";
-import { Input ,Textarea} from "@bigbinary/neetoui/v2";
+import { Input ,Textarea,Modal,Button} from "@bigbinary/neetoui/v2";
 
-
-function ConnectForm({connect,setConnect}) {
+const  ConnectForm = ({connect,setConnect}) =>{
     const [name,setName] = useState('')
     const [mail,setMail] = useState('')
     const [message, setMessage] = useState('')

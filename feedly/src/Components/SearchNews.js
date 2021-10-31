@@ -6,7 +6,7 @@ import { FullDataContext, ListContext, SelectedCategoryContext } from '../App';
 import { Link } from 'react-router-dom';
 import {debounce} from 'lodash'
 
-function SearchNews({showSearch,setShowSearch}) {
+const SearchNews = ({showSearch,setShowSearch}) => {
 
     const {blog,setBlogdata} = useContext(SelectedCategoryContext)
     const {fullData,setFullData} = useContext(FullDataContext)

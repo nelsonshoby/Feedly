@@ -7,7 +7,7 @@ import { BloggContext } from '../App';
 import ConnectForm from './ConnectForm';
 
 
-function EmptyCategotyList() {
+const EmptyCategotyList = () => {
 
     const {blogg , setBlogg} = useContext(BloggContext)
     const [connect,setConnect] = useState(false)
