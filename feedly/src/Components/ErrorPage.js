@@ -11,13 +11,13 @@ const  ErrorPage= () => {
                 <br/>
                 <Typography style="h4"className="font-bold text-2xl">You have landed somwhere unknown.</Typography>
                 <br/>
-                <Link to={{pathname: "/"}} >
+                <a href="/" >
                 <Button 
                     label="Take me home"
                     
                     style="secondary"
                     
-                    iconPosition = "left"/></Link>
+                    iconPosition = "left"/></a>
             </div>
         </div>
     )
