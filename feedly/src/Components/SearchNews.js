@@ -12,6 +12,7 @@ function SearchNews({showSearch,setShowSearch}) {
     const {fullData,setFullData} = useContext(FullDataContext)
     const [searchInput,setSearchIn] = useState()
     const {category_check_list, setCategoryCheckList} = useContext(ListContext)
+    let ele =0
 
 
     if(!showSearch ) return null
@@ -31,7 +32,7 @@ function SearchNews({showSearch,setShowSearch}) {
                                     category_check_list.flatMap((category)=>{
                                         return (fullData.filter(ele => ele.category === category).map(elem=>(elem.data).map((item) => ({...item , category : elem.category}))))[0].filter((news)=>{
                                             return news?.title.toLowerCase().includes(searchInput.toLowerCase())})
-                                    }).map((ele)=><div className = " bg-gray-400 p-3 m-2 rounded-lg  hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-100 focus:ring-opacity-10 "  ><Link to={`/${ele["category"]}/${ele.url.slice(33)}`}  onClick = {()=>setShowSearch(false)}>{ele.title}</Link></div>)
+                                    }).map((element)=> <div className = " bg-gray-400 p-3 m-2 rounded-lg  hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-100 focus:ring-opacity-10 "  ><Link to={`/${element["category"]}/${element.url.slice(33)}`}  onClick = {()=>setShowSearch(false)}>{element.title}</Link></div>)
                                 }
                             </div>
                         )

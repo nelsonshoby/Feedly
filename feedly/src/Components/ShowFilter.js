@@ -46,7 +46,7 @@ function ShowFilter({showPane,setShowPane}) {
                 <Checkbox
                 key = {index}
                 checked = {filterState.includes(ele)?true:false}
-                className = "p-5"
+                className = "p-3"
                 id="checkbox_name"
                 label={ele}
                 value = {ele}

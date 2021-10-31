@@ -1,4 +1,5 @@
 import React, { useState,useEffect,useContext } from 'react'
+import { useLocation } from 'react-router';
 import { useParams} from 'react-router-dom';
 import { Copy } from "@bigbinary/neeto-icons";
 import { LoremIpsum } from 'react-lorem-ipsum';
@@ -16,7 +17,11 @@ function Article() {
     const [currentNews, setCurrentNews] = useState({})
     const [obj, setObj] =useState([])
     const [articlesub,setArticleSub] = useState({})
-    let arr;
+    const data1 = useLocation().state
+    const data2 = data1 ? data1?.ele :0
+    let arr = [0,1,2,3,4,5,6].filter((ele)=>ele!= data2)
+    
+    
     
     const copyToClipBoard = async copyMe => {
         try {
@@ -55,7 +60,7 @@ function Article() {
             </div>
             </Tooltip>
             </Typography>
-            <Typography style="body1" className = "text-gray-400 pt-2 text-left">{currentNews && currentNews?.author+"at"+currentNews?.time+"on"+currentNews?.date}</Typography>
+            <Typography style="body1" className = "text-gray-400 pt-2 text-left">{currentNews && currentNews?.author+"at"+" "+currentNews?.time+" on"+currentNews?.date}</Typography>
             <div className="flex items-center justify-center mt-8">
                 <img src ='https://picsum.photos/526/263' alt = "pic" className="w-150 h-72 "/>
             </div>
@@ -66,7 +71,7 @@ function Article() {
                 </div>
                 <div>
                 <div className = "grid grid-cols-2 gap-x-60 border-b-2 pb-6">
-                    {[2,3,4,5,6,7].map((ele,index) => (
+                    {arr.map((ele,index) => (
                     <div key = {index}>
                     <SubNews blog = {articlesub} ele = {ele}/>
                     </div>

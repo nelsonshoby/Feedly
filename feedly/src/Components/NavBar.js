@@ -19,14 +19,14 @@ function NavBar() {
                     <Typography style="h2"className ="mt-2 text-lg text-gray-500 font-bold">Feed.ly</Typography>
                     </div>
                     <div className="flex justify-end mt-2">
-                    <Tooltip placement = {"bottom"} content = {"Search"}>
-                        <div className="ml-5" onClick = {()=>setShowSearch(!showSearch)}><Search/></div>
+                    <Tooltip   placement = {"bottom"} content = {"Search"} >
+                        <div className="ml-5 cursor-pointer" onClick = {()=>setShowSearch(!showSearch)}><Search/></div>
                     </Tooltip>
-                    <Tooltip placement = {"bottom"} content = {"Notification"}>
-                        <div onClick = {()=>setSub(!showSub)} className="ml-5"><Notification/></div>
+                    <Tooltip   placement = {"bottom"} content = {"Notification"}>
+                        <div onClick = {()=>setSub(!showSub)} className="ml-5 cursor-pointer"><Notification/></div>
                     </Tooltip>
                     <Tooltip placement = {"bottom"} content = {"Filter"}>
-                    <div onClick = {()=>setShowPane(!showPane)} className = "ml-5 mb-2 rounded">
+                    <div onClick = {()=>setShowPane(!showPane)} className = "ml-5 mb-2 rounded cursor-pointer">
                     <Button label ="Filter" style = "secondary" icon={Filter} /></div>
                     </Tooltip>
                     </div>

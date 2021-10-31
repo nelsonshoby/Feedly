@@ -7,6 +7,7 @@ import { createContext, useState } from 'react';
 import EmptyCategotyList from './Components/EmptyCategotyList';
 import ErrorPage from './Components/ErrorPage';
 
+
 export const ListContext = createContext()
 export const BloggContext = createContext()
 export const FullDataContext = createContext()
@@ -15,13 +16,15 @@ export const SelectedCategoryContext = createContext()
 export const CategoryBloggContext = createContext()
 
 
+
 function App() {
   const [blogg , setBlogg ] = useState([])
   const [blog,setBlogdata] = useState({})
   const [fullData,setFullData] = useState([])
-  const [category_check_list, setCategoryCheckList] = useState(["national","all", "sports", "business"]);
+  const [category_check_list, setCategoryCheckList] = useState(["national", "business", "sports","world"]);
   const [todaysNews,setTodaysNews] = useState(true)
   return (
+   
     <Router>
     <div className="App">
       <ListContext.Provider value={{category_check_list, setCategoryCheckList}}>
@@ -51,6 +54,7 @@ function App() {
       </ListContext.Provider>
     </div>
     </Router>
+    
   );
 }
 
