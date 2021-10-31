@@ -54,7 +54,7 @@ const Article= () => {
             <Typography style="h1" className ="flex">{currentNews?.title}
             <Tooltip placement = {"bottom"} content = {"Copy"}>
             <div>
-            <Copy onClick={() => copyToClipBoard(currentNews?.readMoreUrl)} className="mt-2 "/>
+            <Copy onClick={() => copyToClipBoard(currentNews?.readMoreUrl)} className="mt-2 cursor-pointer"/>
             </div>
             </Tooltip>
             </Typography>

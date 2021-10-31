@@ -26,6 +26,7 @@ const ShowFilter = ({showPane,setShowPane}) => {
             setFilterState(check_list);
         }
     };
+    
     return (
         <div>
         <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
