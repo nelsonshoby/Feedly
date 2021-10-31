@@ -4,14 +4,18 @@ import { Typography } from "@bigbinary/neetoui/v2";
 import { Check } from "@bigbinary/neeto-icons";
 import { Checkbox } from "@bigbinary/neetoui/v2";
 import { useContext, useEffect, useState } from 'react'
-import { ListContext } from "../App";
+import { ListContext, TodaysNewsContext } from "../App";
+import { Link } from "react-router-dom";
+import { ALL_CATEGORY } from "../Constants/Constants";
 
 
 function ShowFilter({showPane,setShowPane}) {
   
     const {category_check_list, setCategoryCheckList} = useContext(ListContext)
     const [filterState, setFilterState] = useState(category_check_list)
-    const cate = ["all","science","business","national","sports","world","technology"]
+    const {todaysNews,setTodaysNews} = useContext(TodaysNewsContext)
+    const cate = ALL_CATEGORY
+    
     
     useEffect (()=>{
       setFilterState(category_check_list)
@@ -27,7 +31,6 @@ function ShowFilter({showPane,setShowPane}) {
     };
     return (
         <div>
-        {console.log(filterState)}
         <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
         <Pane.Header>
           <Typography style="h2" weight="semibold" >
@@ -36,11 +39,12 @@ function ShowFilter({showPane,setShowPane}) {
         </Pane.Header>
         <Pane.Body>
         <div className = "p-5" >
-        <h4>Category</h4>
+        <Typography style="h4">Category</Typography>
         <div>
              {
-               cate.map((ele)=> (
+               cate.map((ele,index)=> (
                 <Checkbox
+                key = {index}
                 checked = {filterState.includes(ele)?true:false}
                 className = "p-5"
                 id="checkbox_name"
@@ -61,16 +65,20 @@ function ShowFilter({showPane,setShowPane}) {
                 className = "pl-10 pt-7"
                 id="checkbox_name"
                 label="Include archieved article"
+                value = "archieved"
+                checked = {todaysNews}
+                onClick = {()=> setTodaysNews(prev => !prev)}
               />
         </Pane.Body>
         <Pane.Footer className="flex items-center space-x-2">
-          <Button
+        <Link to={`/`} ><Button
             icon={Check}
             size="large"
             label="Continue"
-            onClick={() => {setShowPane(false);setCategoryCheckList(filterState) }}
+            onClick={() => {setShowPane(false);setCategoryCheckList(filterState);setTodaysNews(prev => prev) }}
             
           />
+          </Link>
           <Button
             style="text"
             size="large"

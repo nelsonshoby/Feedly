@@ -3,13 +3,13 @@ import Group from "../Pictures/Group.png"
 import { Button } from "@bigbinary/neetoui/v2";
 import { Edit } from "@bigbinary/neeto-icons";
 import SubNews from './SubNews';
-import { BlogContext } from '../App';
+import { BloggContext } from '../App';
 import ConnectForm from './ConnectForm';
 
 
 function EmptyCategotyList() {
 
-    const {blogg , setBlogg} = useContext(BlogContext)
+    const {blogg , setBlogg} = useContext(BloggContext)
     const [connect,setConnect] = useState(false)
    
     return (

@@ -8,19 +8,28 @@ import EmptyCategotyList from './Components/EmptyCategotyList';
 import ErrorPage from './Components/ErrorPage';
 
 export const ListContext = createContext()
-export const BlogContext = createContext()
+export const BloggContext = createContext()
 export const FullDataContext = createContext()
+export const TodaysNewsContext = createContext()
+export const SelectedCategoryContext = createContext()
+export const CategoryBloggContext = createContext()
+
 
 function App() {
   const [blogg , setBlogg ] = useState([])
+  const [blog,setBlogdata] = useState({})
   const [fullData,setFullData] = useState([])
   const [category_check_list, setCategoryCheckList] = useState(["national","all", "sports", "business"]);
+  const [todaysNews,setTodaysNews] = useState(true)
   return (
     <Router>
     <div className="App">
       <ListContext.Provider value={{category_check_list, setCategoryCheckList}}>
-        <BlogContext.Provider value={{blogg , setBlogg}} >
-          <FullDataContext.Provider value = {{fullData,setFullData}} >
+        <BloggContext.Provider value={{blogg , setBlogg}} >
+        <FullDataContext.Provider value = {{fullData,setFullData}} >
+        <TodaysNewsContext.Provider value = {{todaysNews,setTodaysNews}}>
+          <SelectedCategoryContext.Provider value= {{blog,setBlogdata}} >
+            
           <NavBar/>
           <div>
           <Switch>
@@ -28,18 +37,19 @@ function App() {
             <Route exact path ="/">
                 <Home/>
             </Route>
-            <Route exact path ="/article">
-                <Article/>
-            </Route>
+            <Route exact path ="/:category/:slug"
+                 component={(props)=><Article {...props} key={window.location.pathname}/>}
+            />
             <Route exact path = "*"> <ErrorPage/></Route>
           </Switch>
           </div>
+         
+         </SelectedCategoryContext.Provider>
+          </TodaysNewsContext.Provider>
           </FullDataContext.Provider>
-        </BlogContext.Provider>   
+        </BloggContext.Provider>   
       </ListContext.Provider>
     </div>
-      
-     
     </Router>
   );
 }
