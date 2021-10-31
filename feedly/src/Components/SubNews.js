@@ -24,7 +24,7 @@ function SubNews({blog,ele}) {
                 <Typography style="h5">{blog.data ? (blog?.data?.[ele])?.title : "Not found"}</Typography>
                    <Typography style="body3" className = "text-gray-400 mt-1">{blog.data ? (blog?.data?.[ele])?.author+"at"+" "+(blog?.data?.[ele])?.time+" on"+(blog?.data?.[ele])?.date : "Not Found"}</Typography>
                    <div>
-                    <Link to={`/${category}/${slug}`} key={slug}  className="flex justify-self-start no-underline mt-1 text-purple-700 ">Read More</Link>
+                    <Link to={{pathname: `/${category}/${slug}`, state : {ele}} } key={slug}  className="flex justify-self-start no-underline mt-1 text-purple-700 ">Read More</Link>
                     </div>
                 </div>
             </div> 

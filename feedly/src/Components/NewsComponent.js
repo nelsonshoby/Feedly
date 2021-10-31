@@ -20,7 +20,7 @@ function NewsComponent({news}) {
     let days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"]
     let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     let today = String(date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear())
-
+    const ele = 0
 
     useEffect(() => {
         setBlogg(blog)
@@ -42,8 +42,8 @@ function NewsComponent({news}) {
     
     useEffect(() => {
         if(Object.keys(blog).length != 0){
-            setSlug(blog.data[0].url.slice(33))
-            setCategory(blog.category)
+            setSlug(blog?.data[0]?.url.slice(33))
+            setCategory(blog?.category)
         }
     },[blog])
 
@@ -62,15 +62,15 @@ function NewsComponent({news}) {
             <img src ='https://picsum.photos/526/263' alt = "pic" className="w-150 h-72 "/>
     
         <div className = "ml-5 flex-col ">
-            <Typography style="h3"className = "text-left">{blog.data ? (blog?.data?.[0])?.title : "Not Found"}</Typography>  
+            <Typography style="h3"className = "text-left">{blog?.data ? (blog?.data?.[0])?.title : "Not Found"}</Typography>  
             <div className = "text-right mt-10">
-            <Typography style="body2" className = "text-gray-400">{blog.data ? (blog?.data?.[0])?.author+"at"+(blog?.data?.[0])?.time+" "+ "on" +(blog?.data?.[0])?.date : "Not Found"}</Typography> 
+            <Typography style="body2" className = "text-gray-400">{blog?.data ? (blog?.data?.[0])?.author+"at"+" "+(blog?.data?.[0])?.time+" "+ "on" +(blog?.data?.[0])?.date : "Not Found"}</Typography> 
             </div>
             <div className = " mt-8 text-left">
-                <Typography style="body1">{blog.data ? (blog?.data?.[0])?.content : "Not Found"}</Typography>
+                <Typography style="body1">{blog?.data ? (blog?.data?.[0])?.content : "Not Found"}</Typography>
             </div>
             <div>
-            <Link to={`./${category}/${slug}`}  className="flex justify-self-start no-underline mt-3  text-purple-700 ">Read More</Link>
+            <Link to={{pathname: `./${category}/${slug}`,state :{ele}}}  className="flex justify-self-start no-underline mt-3  text-purple-700 ">Read More</Link>
             </div>
         </div>
     </div>
