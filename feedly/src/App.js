@@ -6,6 +6,7 @@ import {BrowserRouter as Router,Route,Switch,useLocation} from 'react-router-dom
 import { createContext, useState } from 'react';
 import EmptyCategotyList from './Components/EmptyCategotyList';
 import ErrorPage from './Components/ErrorPage';
+import ErrorBoundary from './Components/ErrorBoundary';
 
 
 export const ListContext = createContext()
@@ -26,6 +27,7 @@ function App() {
   return (
    
     <Router>
+      <ErrorBoundary>
     <div className="App">
       <ListContext.Provider value={{category_check_list, setCategoryCheckList}}>
         <BloggContext.Provider value={{blogg , setBlogg}} >
@@ -36,6 +38,7 @@ function App() {
           <NavBar/>
           <div>
           <Switch>
+          
           <Route exact path = "/empty"> <EmptyCategotyList/></Route>
             <Route exact path ="/">
                 <Home/>
@@ -44,6 +47,7 @@ function App() {
                  component={(props)=><Article {...props} key={window.location.pathname}/>}
             />
             <Route exact path = "*"> <ErrorPage/></Route>
+            
           </Switch>
           </div>
          
@@ -53,6 +57,7 @@ function App() {
         </BloggContext.Provider>   
       </ListContext.Provider>
     </div>
+    </ErrorBoundary>
     </Router>
     
   );

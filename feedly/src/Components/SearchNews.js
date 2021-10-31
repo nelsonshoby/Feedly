@@ -19,7 +19,13 @@ const SearchNews = ({showSearch,setShowSearch}) => {
     return ReactDOM.createPortal (
 
         <div>
-            <div onClick = {()=>setShowSearch(false)}  onClose={() => setShowSearch(false)} className ="bg-gray-700 opacity-75 fixed top-0 bottom-0 right-0 left-0 ">
+            <div 
+                onClick = {()=>setShowSearch(false)}  
+                onClose={() => {
+                    setSearchIn(null)
+                    setShowSearch(false)
+                }} 
+                className ="bg-gray-700 opacity-75 fixed top-0 bottom-0 right-0 left-0 ">
             </div>
             <div className = "fixed top-1/3 w-full h-full">
                 
@@ -32,7 +38,16 @@ const SearchNews = ({showSearch,setShowSearch}) => {
                                     category_check_list.flatMap((category)=>{
                                         return (fullData.filter(ele => ele.category === category).map(elem=>(elem.data).map((item) => ({...item , category : elem.category}))))[0].filter((news)=>{
                                             return news?.title.toLowerCase().includes(searchInput.toLowerCase())})
-                                    }).map((element)=> <div className = " bg-gray-400 p-3 m-2 rounded-lg  hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-100 focus:ring-opacity-10 "  ><Link to={`/${element["category"]}/${element.url.slice(33)}`}  onClick = {()=>setShowSearch(false)}>{element.title}</Link></div>)
+                                    }).map((element)=> <div className = " bg-gray-400 p-3 m-2 rounded-lg  hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-100 focus:ring-opacity-10 "  >
+                                        <Link 
+                                            to={`/${element["category"]}/${element.url.slice(33)}`}  
+                                            onClick = {()=>{
+                                                setShowSearch(false)
+                                                setSearchIn(null)
+                                                }}>
+                                                {element.title}
+                                        </Link>
+                                    </div>)
                                 }
                             </div>
                         )
