@@ -1,5 +1,7 @@
-import { Pane,Button,Typography,Checkbox } from "@bigbinary/neetoui/v2";
+import { Pane,Button,Typography } from "@bigbinary/neetoui/v2";
+
 import { Check } from "@bigbinary/neeto-icons";
+import { Checkbox } from "@bigbinary/neetoui/v2";
 import { useContext, useEffect, useState } from 'react'
 import { ListContext, TodaysNewsContext } from "../App";
 import { Link } from "react-router-dom";
@@ -19,6 +21,7 @@ const ShowFilter = ({showPane,setShowPane}) => {
     },[category_check_list])
     
     const categoryCheckboxFilterHandler = (e)=> {
+      
         if (e.target.checked == true){
           setFilterState(prev => [...prev, e.target.value]);
         }else{
@@ -26,7 +29,6 @@ const ShowFilter = ({showPane,setShowPane}) => {
             setFilterState(check_list);
         }
     };
-    
     return (
         <div>
         <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
