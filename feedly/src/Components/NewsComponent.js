@@ -13,13 +13,14 @@ const NewsComponent = ({news}) => {
     const  [slug,setSlug] = useState('')
     const  [category,setCategory] = useState('')
     const {todaysNews,setTodaysNews} = useContext(TodaysNewsContext)
+   
     
 
     let data = []
     let date = new Date()
     let days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"]
     let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    let today = String(date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear())
+    let today = String(("0" + date.getDate()).slice(-2) + ' ' + month[date.getMonth()] + ' ' + date.getFullYear())
     const ele = 0
 
     useEffect(() => {
@@ -27,22 +28,29 @@ const NewsComponent = ({news}) => {
     },[blog])
 
     useEffect (()=>{
+        console.log("archive = ", todaysNews)
+        console.log("fulldata" , fullData)
         data = fullData.filter(ele => ele.category === news)
+        console.log("data",data)
         
         if(!todaysNews){
-            data[0].data = data[0].data.filter((ele) => {
-                
+            const del ={category : news}
+            del.data = data[0].data.filter((ele) => {
+                console.log("the days are",ele.date.slice(0,11), today,ele.date.slice(0,11)=== today)
                 return ele.date.slice(0,11) === today
             })
+            console.log('the correct ans', del)
+            setBlogdata(del)
         }
-       
-        setBlogdata(data[0])
+       else{
+           setBlogdata(data[0])
+       }
     },[news,fullData,todaysNews])
 
     
     useEffect(() => {
         if(Object.keys(blog).length != 0){
-            setSlug(blog?.data[0]?.url.slice(33))
+            setSlug(blog?.data?.[0]?.url.slice(33))
             setCategory(blog?.category)
         }
     },[blog])
